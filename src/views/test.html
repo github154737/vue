@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>第一个js GIS地图</title>
+    <style>
+        html, body, #mapDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+    <!-- <link rel="stylesheet" type="text/css" href="http://localhost/arcgis_js_v39_sdk/arcgis_js_api/library/3.9/3.9/js/dojo/dijit/themes/tundra/tundra.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost/arcgis_js_v39_sdk/arcgis_js_api/library/3.9/3.9/js/esri/css/esri.css" /> -->
+    <!-- <script type="text/javascript" src="http://localhost/arcgis_js_v39_sdk/arcgis_js_api/library/3.9/3.9/init.js"></script> -->
+    <script type="text/javascript">
+        const Map= require("@arcgis/core/Map");
+        dojo.require("esri.map");
+        function init() {
+            var myMap = new esri.Map("mapDiv");
+            var myTiledMapServiceLayer = new esri.layers.ArcGISTiledMapServiceLayer("http://cache1.arcgisonline.cn/ArcGIS/rest/services/ChinaOnlineCommunityENG/MapServer");
+            myMap.addLayer(myTiledMapServiceLayer);
+        }
+        dojo.addOnLoad(init);
+    </script>
+</head>
+<body class="claro">
+    <div id="mapDiv" style="height: 600px; border: 1px solid #000;"></div>
+</body>
+</html>
