@@ -23,18 +23,26 @@
               <i class="el-icon-coin"></i>
               <span slot="title">数据展示区</span>
             </template>
-              <el-menu-item index="1-1" @click="goUserManage">用户管理</el-menu-item>
-              <el-menu-item index="1-2" @click="goUserData">用户数据</el-menu-item>
-              <el-menu-item index="1-3" @click="goUserView">用户一览</el-menu-item>
+              <el-menu-item index="1-1" @click="goUserManage">用户管理(完成)</el-menu-item>
+              <el-menu-item index="1-2" @click="goUserData">用户数据(完成)</el-menu-item>
+              <el-menu-item index="1-3" @click="goUserView">用户一览(构建中)</el-menu-item>
           </el-submenu>
           <el-submenu index="2">
             <template slot="title">
               <i class="el-icon-discover"></i>
               <span slot="title">地图展示区</span>
             </template>
-              <el-menu-item index="2-1">地图1</el-menu-item>
-              <el-menu-item index="2-2">地图2</el-menu-item>
-              <el-menu-item index="2-3">地图3</el-menu-item>
+              <el-menu-item index="2-1" @click="goIndexMap">基础地图(完成)</el-menu-item>
+              <el-submenu index="2-2">
+                <template slot="title">
+                <i class="el-icon-position"></i>
+                <span slot="title">功能展示区</span>
+                </template>
+                <el-menu-item index="2-2-1" @click="goGetWeather">获取天气</el-menu-item>
+                <el-menu-item index="2-2-2">待定</el-menu-item>
+                <el-menu-item index="2-2-3">待定</el-menu-item>
+              </el-submenu>
+              <el-menu-item index="2-3">地图3(构建中)</el-menu-item>
           </el-submenu>
           <el-submenu index="3" >
             <template slot="title">
@@ -93,6 +101,12 @@ export default {
     },
     goUserView(){
         this.$router.push('/userManagement')
+    },
+    goIndexMap(){
+        this.$router.push('/IndexMap')
+    },
+    goGetWeather(){
+      this.$router.push("/getWeather")
     }
   }
 
