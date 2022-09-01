@@ -63,8 +63,8 @@ mounted(){
 
     //点击登陆按钮事件
     onSubmit() {
-      console.log("向后端传数据:"),
-      console.log("账号："+this.account.username+"\n密码："+this.account.password),
+      // console.log("向后端传数据:"),
+      // console.log("账号："+this.account.username+"\n密码："+this.account.password),
       this.axios.get('/usersapi', {params:{UserName : this.account.username,Password:this.account.password,Type:"admin"}})
       .then(res=>{
         if(res.data==this.account.password){

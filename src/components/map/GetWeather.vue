@@ -14,7 +14,7 @@
     //引入高德地图
 	import AMapLoader from '@amap/amap-jsapi-loader'
 	export default {
-		name: 'IndexMap',
+		name: 'GetWeather',
 		data() {
 			return {
                 map: null, //地图实例

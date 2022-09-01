@@ -174,6 +174,7 @@ export default {
         .then((res)=>{console.log(res)})
         .then(this.load())
         .then(window.location.reload())
+        .then(this.$message({message:"删除成功",type:"success"}))
       }
     }
 

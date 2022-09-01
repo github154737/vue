@@ -3,14 +3,10 @@
     <el-container>
         <el-main>
             <div id="bar" style="width: 600px;height: 400px;"></div>
-            <div id="myChart" :style="{width: '50%', height: '300px'}"></div>
+            <div id="myChart"  :style="linestyle"></div>
         </el-main>
 
     </el-container>
-
-
-    
-
   </div>
 </template>
  
@@ -20,20 +16,19 @@ export default {
 data() {
     return {
         myChart: null,
+        timeData:[],
+        countData:[],
         option: {
             title: {
-                text: '用户数量变化曲线',
+                text: '七日用户数量变化曲线',
             },
             tooltip: {
                 trigger: 'axis',
 
             },
-            legend: {
-                data: ['昨日(11月8日)', '今日(11月9日)']
-            },
             grid: {
-                left: '20%',
-                right: '1%',
+                left: '10%',
+                right: '10%',
                 bottom: '3%',
                 containLabel: true
             },
@@ -57,9 +52,13 @@ data() {
             xAxis: {
                 type: 'category',
                 boundaryGap: false,
-                data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17',
-                    '18', '19', '20', '21', '22', '23', '24'
-                ]
+                data: [],
+                axisLabel:{
+                  // interval:0,
+                  textStyle:{
+                    fontSize:12
+                  }
+                }
             },
             yAxis: {
                 type: 'value',
@@ -69,28 +68,30 @@ data() {
                 }
             },
             series: [{
-                    name: '昨日(11月8日)',
+                    name: '用户人数',
                     type: 'line',
-                    data: [110, 106, 110, 110, 318, 119, 205, 256, 156, 309, 256, 306, 206, 356, 456, 486,
-                        565.45, 234, 156, 206, 126, 256, 150, 276
-                    ],
+                    data:[210, 136, 120, 120, 118, 219, 195, 176, 156, 329, 356, 346, 406.54, 256, 156]
 
                 },
-                {
-                    type: 'line',
-                    name: '今日(11月9日)',
-                    data: [210, 136, 120, 120, 118, 219, 195, 176, 156, 329, 356, 346, 406.54, 256, 156],
-                }
             ]
         }
     }
 		},
-mounted(){
-    this.$bus.$on("sendPopulation",data=>{
-      console.log("this is data:"+data)
-    })
+
+
+
+
+mounted(){  
+    this.lodaData();
     this.barEcharts();
     this.drawBar();
+    
+},
+  computed:{
+    linestyle(){
+      return {width:document.documentElement.clientWidth-400+'px',
+              height:"300px"}
+    }
 },
   methods: {
     barEcharts () {
@@ -135,11 +136,33 @@ mounted(){
 				// 设置该 chart 的 resize 方法
 				window.addEventListener("resize", this.myChart.resize)
  
-			}
+			},
+
+    lodaData(){
+      var _that = this;
+      this.axios.get('/usersapi/'+'test')
+      .then(function(res){
+        var countdata = [];
+        for(var i=0;i<7;i++){
+          _that.timeData[i] = res.data[6-i].day;
+          countdata[i] = res.data[6-i].count;
+        }
+        _that.option.xAxis.data = _that.timeData
+        _that.option.series[0].data = countdata
+        // console.log(_that.option.series[0].data)
+        
+
+
+        // // 当浏览器窗口大小发生改变的时候修改图标的大小
+        // window.resize(function(){
+        //   _that.$refs.myChart.resize();
+        // });
+
+      })
+    }
 
   },
   watch: {
-			// 监听 option 更新
 			option: {
 				// 更新处理，也可以 handler(newVal，oldVal)
 				handler(newVal) {

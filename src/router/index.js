@@ -13,7 +13,7 @@ import add from '@/components/map/add'
 import Draw from '@/components/map/Draw'
 import Register from "@/views/Register"
 import userManagement from "@/components/userManagement"
-import navigator from '@/components/navigator'
+
 
 
 Vue.use(Router)
@@ -42,7 +42,18 @@ export default new Router({
           path:'/userData',
           component: () => import('@/components/userData'),
           name:'userData'
-        }
+        },
+        {
+          path:'/IndexMap',
+          component: () => import('@/components/map/IndexMap'),
+          name:'IndexMap'
+        },
+        {
+          path:'/GetWeather',
+          component: () => import('@/components/map/GetWeather'),
+          name:'GetWeather'
+        },
+
       ]
     },
     {
