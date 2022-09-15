@@ -7,7 +7,6 @@ import ResetPassword from '@/views/ResetPassword.vue'
 import ForgetPassword from '@/views/ForgetPassword.vue'
 import mymap from '@/views/mymap.vue'
 import MapPage from '@/views/MapPage.vue'
-import IndexMap from '@/components/map/IndexMap.vue'
 import GetCoordinate from '@/components/map/GetCoordinate.vue'
 import add from '@/components/map/add'
 import Draw from '@/components/map/Draw'
@@ -53,6 +52,11 @@ export default new Router({
           component: () => import('@/components/map/GetWeather'),
           name:'GetWeather'
         },
+        {
+          path:'/navigation',
+          component: () => import('@/components/map/navigation'),
+          name:'navigation'
+        },
 
       ]
     },
@@ -86,11 +90,7 @@ export default new Router({
       name:'GetCoordinate',
       component:GetCoordinate
     },
-    {
-      path:'/IndexMap',
-      name:'IndexMap',
-      component:IndexMap
-    },
+    
     {
       path:'/add',
       name:'add',

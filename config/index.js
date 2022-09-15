@@ -13,7 +13,7 @@ module.exports = {
     proxyTable: { // 配置跨域
 
       '/usersapi':{
-          target:`http://localhost:8888/users`, //请求后台接口
+          target:`http://localhost:8083/users`, //请求后台接口
           changeOrigin:true, // 允许跨域
           pathRewrite:{
               '^/usersapi' : '' // 重写请求

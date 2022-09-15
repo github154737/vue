@@ -13,6 +13,7 @@
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
     "@arcgis/core": "4.24",
+    "@icon-park/vue": "^1.4.2",
     "@types/arcgis-js-api": "^4.24.0",
     "echarts": "^5.3.3",
     "element-ui": "^2.4.5",

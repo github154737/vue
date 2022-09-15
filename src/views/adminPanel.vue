@@ -8,6 +8,7 @@
       <userData       v-show="$route.path=='/userData'"></userData>
       <IndexMap       v-show="$route.path=='/IndexMap'"></IndexMap>
       <GetWeather     v-show="$route.path=='/GetWeather'"></GetWeather>
+      <Navigation     v-show="$route.path=='/navigation'"></Navigation>
 
 
       
@@ -23,11 +24,12 @@ import userManagement from '../components/userManagement.vue';
 import userData from '../components/userData.vue'
 import IndexMap from '../components/map/IndexMap.vue'
 import GetWeather from "../components/map/GetWeather.vue"
+import Navigation from '../components/map/navigation.vue'
 
 
 export default {
   name: 'adminPanel',
-  components:{ navigator, userManagement, userData, IndexMap, GetWeather },
+  components:{ navigator, userManagement, userData, IndexMap, GetWeather, Navigation },
 
 }
 </script>

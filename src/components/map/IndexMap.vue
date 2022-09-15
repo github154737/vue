@@ -41,11 +41,11 @@
 					this.map = new AMap.Map("Map", { //设置地图容器id
                   
 						viewMode: "3D", //是否为3D地图模式
-						zoom: 10, //初始化地图级别
+						zoom: 4, //初始化地图级别
 						center: [116.397128, 39.916527], //初始化地图中心点位置
 					});
 				}).then(map => {
-							var wms  = new AMap.TileLayer.WMS({
+							var country_bound  = new AMap.TileLayer.WMS({
 							url: 'http://localhost:8081/geoserver/cite/wms', // wms服务的url地址
 							blend: false, // 地图级别切换时，不同级别的图片是否进行混合
 							tileSize: 512, // 加载WMS图层服务时，图片的分片大小
@@ -54,8 +54,28 @@
 								VERSION:'1.1.1'
 							} // OGC标准的WMS地图服务的GetMap接口的参数
 						});
+						var province_bound  = new AMap.TileLayer.WMS({
+							url: 'http://localhost:8081/geoserver/cite/wms', // wms服务的url地址
+							blend: false, // 地图级别切换时，不同级别的图片是否进行混合
+							tileSize: 512, // 加载WMS图层服务时，图片的分片大小
+							params: {
+								'LAYERS': 'cite:province_line',//在图层预览里面的名称
+								VERSION:'1.1.1'
+							} // OGC标准的WMS地图服务的GetMap接口的参数
+						});
+						// var province_area  = new AMap.TileLayer.WMS({
+						// 	url: 'http://localhost:8081/geoserver/cite/wms', // wms服务的url地址
+						// 	blend: false, // 地图级别切换时，不同级别的图片是否进行混合
+						// 	tileSize: 512, // 加载WMS图层服务时，图片的分片大小
+						// 	params: {
+						// 		'LAYERS': 'cite:province_p',//在图层预览里面的名称
+						// 		VERSION:'1.1.1'
+						// 	} // OGC标准的WMS地图服务的GetMap接口的参数
+						// });
 
-						this.map.add(wms);
+						this.map.add(country_bound);
+						this.map.add(province_bound);
+						// this.map.add(province_area);
 					
 				})
 
