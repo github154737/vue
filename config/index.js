@@ -11,14 +11,38 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: { // 配置跨域
-
+      //上传用户数据校验密码的接口
       '/usersapi':{
           target:`http://localhost:8083/users`, //请求后台接口
           changeOrigin:true, // 允许跨域
           pathRewrite:{
               '^/usersapi' : '' // 重写请求
           }
-      }
+      },
+      //echarts地球贴纸，用于三维旋转小地球
+      '/earthapi':{
+        target:`https://echarts.apache.org/examples`, //请求后台接口
+        changeOrigin:true, // 允许跨域
+        pathRewrite:{
+            '^/earthapi' : '' // 重写请求
+        }
+      },
+      //上传geodata的接口
+      '/geoDataApi':{
+        target:`http://localhost:8083/postGeoData`, //请求后台接口
+        changeOrigin:true, // 允许跨域
+        pathRewrite:{
+            '^/geoDataApi' : '' // 重写请求
+        }
+      },
+      //获取最近经纬度的降水数据的接口
+      '/rainDataApi':{
+        target:`http://localhost:8083/RainData`, //请求后台接口
+        changeOrigin:true, // 允许跨域
+        pathRewrite:{
+            '^/rainDataApi' : '' // 重写请求
+        }
+      },
 
       // '/ChangePasswordAPI':{
       //   target:`http://127.0.0.1:3000/ChangePassword`, //请求后台接口

@@ -34,7 +34,7 @@
 //   import OSM from 'ol/source/OSM'
 //   import {defaults, FullScreen, ScaleLine, ZoomSlider, MousePosition} from 'ol/control'
   // 导入ol的CSS样式
-  import 'ol/ol.css'
+  // import 'ol/ol.css'
   import IndexMap from "../components/map/IndexMap.vue"
 
 

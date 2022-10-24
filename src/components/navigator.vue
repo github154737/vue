@@ -1,12 +1,13 @@
 <template>
     <div>
 
-         <el-container style="min-height:100%;" >
+      <el-container style="min-height:100%;" >
 
       <el-aside :width="sideWidth+'px'"  style="background-color: rgb(238, 241, 246);overflow-y: scroll" >
 <!--    :collapse-transition="false" 关闭标签动画效果，解决导航栏收缩卡顿问题-->
-        <el-menu :default-openeds="['1','2','3']"
-            default-active="1-1"
+                              <!-- ↓↓↓默认展开设置↓↓↓ -->
+        <el-menu :default-openeds="['1','2','3','2-2']"
+
             style="min-height:100%;"
             background-color="rgb(48,65,86)"
             text-color="#fff"
@@ -15,7 +16,7 @@
             :collapse-transition="false">
 <!--          添加目录头-->
           <div style="height:60px;line-height: 60px;text-align: center">
-            <img src="../assets/logo.png" style="width:20px;position: relative; top:5px;margin-left: 5px">
+            <img src="../assets/earth1.gif" style="width:40px;position: relative; top:12px;margin-left: 0px;left:0px">
             <b style="color:white" v-show="LogoTextShow">后台管理界面</b>
           </div>
           <el-submenu index="1">
@@ -25,7 +26,7 @@
             </template>
               <el-menu-item index="1-1" @click="goUserManage">用户管理(完成)</el-menu-item>
               <el-menu-item index="1-2" @click="goUserData">用户数据(完成)</el-menu-item>
-              <el-menu-item index="1-3" @click="goUserView">用户一览(构建中)</el-menu-item>
+              <!-- <el-menu-item index="1-3" @click="goUserView">用户一览(构建中)</el-menu-item> -->
           </el-submenu>
           <el-submenu index="2">
             <template slot="title">
@@ -38,9 +39,14 @@
                 <i class="el-icon-position"></i>
                 <span slot="title">功能展示区</span>
                 </template>
-                <el-menu-item index="2-2-1" @click="goGetWeather">获取天气</el-menu-item>
-                <el-menu-item index="2-2-2" @click="goNavigation">路径导航</el-menu-item>
-                <el-menu-item index="2-2-3">待定</el-menu-item>
+                <el-menu-item index="2-2-1" @click="goGetWeather">获取天气(完成)</el-menu-item>
+                <el-menu-item index="2-2-2" @click="goNavigation">路径导航(完成)</el-menu-item>
+                <el-menu-item index="2-2-3" @click="goclick4property">点击获取属性(完成)</el-menu-item>
+                <el-menu-item index="2-2-4" @click="goEdit">编辑保存图形(完成)</el-menu-item>
+                <el-menu-item index="2-2-5" @click="goRainPrediction">降雨可视化(完成)</el-menu-item>
+                <el-menu-item index="2-2-6" >构造中</el-menu-item>
+                <el-menu-item index="2-2-7" >构造中</el-menu-item>
+                <el-menu-item index="2-2-8" >构造中</el-menu-item>
               </el-submenu>
               <el-menu-item index="2-3">地图3(构建中)</el-menu-item>
           </el-submenu>
@@ -75,6 +81,7 @@ export default {
       isCollapsed:false, //false展开true折叠
       sideWidth:200,//侧导航栏宽度
       LogoTextShow:true,//文本是否显示
+
     }
   },
 
@@ -92,6 +99,7 @@ export default {
 
       }
     },
+
     goUserManage(){
         this.$router.push('/adminPanel')
 
@@ -110,8 +118,18 @@ export default {
     },
     goNavigation(){
         this.$router.push("/navigation")
-    }
-  }
+    },
+    goclick4property(){
+      this.$router.push("/click4property")
+    },
+    goEdit(){
+      this.$router.push("/edit")
+    },
+    goRainPrediction(){
+      this.$router.push("/rainPrediction")
+    },
+  },
+
 
 }
 </script>

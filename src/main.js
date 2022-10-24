@@ -8,6 +8,9 @@ import './plugins/element.js'
 import ElementUI from 'element-ui'
 import * as echarts from 'echarts'
 
+// import ECharts from 'vue-echarts'
+// Vue.component('VueEcharts', ECharts)
+
 
 
 

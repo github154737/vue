@@ -41,7 +41,7 @@
 
         
           <!--      表格主题-->
-          <el-table :data="tableData" >
+          <el-table v-loading="loading" element-loading-text="拼命加载中" :data="tableData" >
 <!--            table li的prop和数据表的表头 相同-->
             <el-table-column type="index" align="left" width="90"  label="编号" > </el-table-column>
             <el-table-column prop="UserName" label="UserName" width="140"></el-table-column>
@@ -100,7 +100,8 @@ export default {
       isCollapsed:false, //false展开true折叠
       sideWidth:200,//侧导航栏宽度
       LogoTextShow:true,//文本是否显示
-      password:""
+      password:"",
+      loading:true
     }
   },
   
@@ -140,6 +141,7 @@ export default {
 
     load(){
       var that = this;
+      this.loading=true
       this.axios.get('/usersapi/'+this.pageNum+"/"+this.pageSize)
       .then(function (res) {
           that.tableData=res.data;
@@ -150,6 +152,7 @@ export default {
        this.axios.get('/usersapi/dataList')
       .then(function (res) {    
           that.total=res.data.length;
+          that.loading=false;
         })     
     },
 
@@ -169,13 +172,28 @@ export default {
     },
 
     deleteUser(row){
-      if(confirm("确定删除吗？删除是不可逆的操作！")){
-        this.axios.delete('/usersapi'+row.UserName)
-        .then((res)=>{console.log(res)})
-        .then(this.load())
-        .then(window.location.reload())
-        .then(this.$message({message:"删除成功",type:"success"}))
-      }
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        })
+        .then(() => {
+            this.axios.delete('/usersapi'+row.UserName)
+            .then((res)=>{console.log(res)})
+            .then(this.load())
+            .then(window.location.reload())
+            this.$message({
+                type: 'success',
+                message: '删除成功!'
+          });
+        })
+        .catch(() => {
+            this.$message({
+                type: 'info',
+                message: '已取消删除'
+          });          
+        });
+
     }
 
   }

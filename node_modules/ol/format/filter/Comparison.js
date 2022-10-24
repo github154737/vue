@@ -1,22 +1,8 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 /**
  * @module ol/format/filter/Comparison
  */
 import Filter from './Filter.js';
+
 /**
  * @classdesc
  * Abstract class; normally only used for creating subclasses and not instantiated in apps.
@@ -24,21 +10,19 @@ import Filter from './Filter.js';
  *
  * @abstract
  */
-var Comparison = /** @class */ (function (_super) {
-    __extends(Comparison, _super);
+class Comparison extends Filter {
+  /**
+   * @param {!string} tagName The XML tag name for this filter.
+   * @param {!string} propertyName Name of the context property to compare.
+   */
+  constructor(tagName, propertyName) {
+    super(tagName);
+
     /**
-     * @param {!string} tagName The XML tag name for this filter.
-     * @param {!string} propertyName Name of the context property to compare.
+     * @type {!string}
      */
-    function Comparison(tagName, propertyName) {
-        var _this = _super.call(this, tagName) || this;
-        /**
-         * @type {!string}
-         */
-        _this.propertyName = propertyName;
-        return _this;
-    }
-    return Comparison;
-}(Filter));
+    this.propertyName = propertyName;
+  }
+}
+
 export default Comparison;
-//# sourceMappingURL=Comparison.js.map

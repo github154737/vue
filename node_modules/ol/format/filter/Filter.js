@@ -1,6 +1,7 @@
 /**
  * @module ol/format/filter/Filter
  */
+
 /**
  * @classdesc
  * Abstract class; normally only used for creating subclasses and not instantiated in apps.
@@ -8,25 +9,25 @@
  *
  * @abstract
  */
-var Filter = /** @class */ (function () {
+class Filter {
+  /**
+   * @param {!string} tagName The XML tag name for this filter.
+   */
+  constructor(tagName) {
     /**
-     * @param {!string} tagName The XML tag name for this filter.
+     * @private
+     * @type {!string}
      */
-    function Filter(tagName) {
-        /**
-         * @private
-         * @type {!string}
-         */
-        this.tagName_ = tagName;
-    }
-    /**
-     * The XML tag name for a filter.
-     * @return {!string} Name.
-     */
-    Filter.prototype.getTagName = function () {
-        return this.tagName_;
-    };
-    return Filter;
-}());
+    this.tagName_ = tagName;
+  }
+
+  /**
+   * The XML tag name for a filter.
+   * @return {!string} Name.
+   */
+  getTagName() {
+    return this.tagName_;
+  }
+}
+
 export default Filter;
-//# sourceMappingURL=Filter.js.map

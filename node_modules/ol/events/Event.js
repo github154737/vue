@@ -1,6 +1,7 @@
 /**
  * @module ol/events/Event
  */
+
 /**
  * @classdesc
  * Stripped down implementation of the W3C DOM Level 2 Event interface.
@@ -11,60 +12,66 @@
  * for higher level events defined in the library, and works with
  * {@link module:ol/events/Target~Target}.
  */
-var BaseEvent = /** @class */ (function () {
+class BaseEvent {
+  /**
+   * @param {string} type Type.
+   */
+  constructor(type) {
     /**
-     * @param {string} type Type.
+     * @type {boolean}
      */
-    function BaseEvent(type) {
-        /**
-         * @type {boolean}
-         */
-        this.propagationStopped;
-        /**
-         * @type {boolean}
-         */
-        this.defaultPrevented;
-        /**
-         * The event type.
-         * @type {string}
-         * @api
-         */
-        this.type = type;
-        /**
-         * The event target.
-         * @type {Object}
-         * @api
-         */
-        this.target = null;
-    }
+    this.propagationStopped;
+
     /**
-     * Prevent default. This means that no emulated `click`, `singleclick` or `doubleclick` events
-     * will be fired.
+     * @type {boolean}
+     */
+    this.defaultPrevented;
+
+    /**
+     * The event type.
+     * @type {string}
      * @api
      */
-    BaseEvent.prototype.preventDefault = function () {
-        this.defaultPrevented = true;
-    };
+    this.type = type;
+
     /**
-     * Stop event propagation.
+     * The event target.
+     * @type {Object}
      * @api
      */
-    BaseEvent.prototype.stopPropagation = function () {
-        this.propagationStopped = true;
-    };
-    return BaseEvent;
-}());
+    this.target = null;
+  }
+
+  /**
+   * Prevent default. This means that no emulated `click`, `singleclick` or `doubleclick` events
+   * will be fired.
+   * @api
+   */
+  preventDefault() {
+    this.defaultPrevented = true;
+  }
+
+  /**
+   * Stop event propagation.
+   * @api
+   */
+  stopPropagation() {
+    this.propagationStopped = true;
+  }
+}
+
 /**
  * @param {Event|import("./Event.js").default} evt Event
  */
 export function stopPropagation(evt) {
-    evt.stopPropagation();
+  evt.stopPropagation();
 }
+
 /**
  * @param {Event|import("./Event.js").default} evt Event
  */
 export function preventDefault(evt) {
-    evt.preventDefault();
+  evt.preventDefault();
 }
+
 export default BaseEvent;
-//# sourceMappingURL=Event.js.map

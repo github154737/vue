@@ -4,6 +4,7 @@
         <el-main>
             <div id="bar" style="width: 600px;height: 400px;"></div>
             <div id="myChart"  :style="linestyle"></div>
+            
         </el-main>
 
     </el-container>
@@ -11,10 +12,16 @@
 </template>
  
 <script>
+import 'echarts-gl';
+
+
+
+
 export default {
   name: 'userData',
 data() {
     return {
+        earth:null,
         myChart: null,
         timeData:[],
         countData:[],
@@ -74,19 +81,26 @@ data() {
 
                 },
             ]
-        }
+        },
+        baseTexture:null,
+        heightTexture:null,
+        environment:null,
+        texture:null,
+
     }
 		},
 
 
-
-
 mounted(){  
+
     this.lodaData();
     this.barEcharts();
     this.drawBar();
+
     
 },
+
+
   computed:{
     linestyle(){
       return {width:document.documentElement.clientWidth-400+'px',
@@ -95,8 +109,8 @@ mounted(){
 },
   methods: {
     barEcharts () {
-      	  var myChart = this.$echarts.init(document.getElementById('bar'))
-      	// 配置图表
+      var myChart = this.$echarts.init(document.getElementById('bar'))
+      // 配置图表
 		  var option = {
 			title: {
 			  text: 'echrt demo'
@@ -137,6 +151,8 @@ mounted(){
 				window.addEventListener("resize", this.myChart.resize)
  
 			},
+
+
 
     lodaData(){
       var _that = this;

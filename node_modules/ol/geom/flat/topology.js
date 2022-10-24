@@ -1,7 +1,8 @@
 /**
  * @module ol/geom/flat/topology
  */
-import { linearRing as linearRingArea } from './area.js';
+import {linearRing as linearRingArea} from './area.js';
+
 /**
  * Check if the linestring is a boundary.
  * @param {Array<number>} flatCoordinates Flat coordinates.
@@ -11,12 +12,13 @@ import { linearRing as linearRingArea } from './area.js';
  * @return {boolean} The linestring is a boundary.
  */
 export function lineStringIsClosed(flatCoordinates, offset, end, stride) {
-    var lastCoord = end - stride;
-    if (flatCoordinates[offset] === flatCoordinates[lastCoord] &&
-        flatCoordinates[offset + 1] === flatCoordinates[lastCoord + 1] &&
-        (end - offset) / stride > 3) {
-        return !!linearRingArea(flatCoordinates, offset, end, stride);
-    }
-    return false;
+  const lastCoord = end - stride;
+  if (
+    flatCoordinates[offset] === flatCoordinates[lastCoord] &&
+    flatCoordinates[offset + 1] === flatCoordinates[lastCoord + 1] &&
+    (end - offset) / stride > 3
+  ) {
+    return !!linearRingArea(flatCoordinates, offset, end, stride);
+  }
+  return false;
 }
-//# sourceMappingURL=topology.js.map

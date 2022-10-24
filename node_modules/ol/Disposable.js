@@ -1,34 +1,36 @@
 /**
  * @module ol/Disposable
  */
+
 /**
  * @classdesc
  * Objects that need to clean up after themselves.
  */
-var Disposable = /** @class */ (function () {
-    function Disposable() {
-        /**
-         * The object has already been disposed.
-         * @type {boolean}
-         * @protected
-         */
-        this.disposed = false;
-    }
+class Disposable {
+  constructor() {
     /**
-     * Clean up.
-     */
-    Disposable.prototype.dispose = function () {
-        if (!this.disposed) {
-            this.disposed = true;
-            this.disposeInternal();
-        }
-    };
-    /**
-     * Extension point for disposable objects.
+     * The object has already been disposed.
+     * @type {boolean}
      * @protected
      */
-    Disposable.prototype.disposeInternal = function () { };
-    return Disposable;
-}());
+    this.disposed = false;
+  }
+
+  /**
+   * Clean up.
+   */
+  dispose() {
+    if (!this.disposed) {
+      this.disposed = true;
+      this.disposeInternal();
+    }
+  }
+
+  /**
+   * Extension point for disposable objects.
+   * @protected
+   */
+  disposeInternal() {}
+}
+
 export default Disposable;
-//# sourceMappingURL=Disposable.js.map

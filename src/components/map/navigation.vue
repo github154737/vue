@@ -6,23 +6,29 @@
 			<!-- 可以不写宽度，但一定要有高度 -->
 			<div id="navigation" style="height: 100vh;width:85.8vw;z-index: 1;" >
 				<div id="test">
+					<el-tooltip class="item" content="坐公交" placement="top">
 					<Bus id="unBus" @click="ifbus = !ifbus;ifcar=false;ifriding=false;" v-if="ifbus ==false" style="position:relative;left:22%;top:8px;" 
-					theme="multi-color" size="24" :fill="['#FFFFFF' ,'#2F88FF' ,'#FFF' ,'#b8e986']" :strokeWidth="3"/>
+					theme="multi-color" size="24" :fill="['#FFFFFF' ,'#2F88FF' ,'#FFF' ,'#b8e986']" :strokeWidth="3"/></el-tooltip>
 
+					<el-tooltip class="item" content="坐公交" placement="top">
 					<Bus id="doBus" @click="ifbus = !ifbus;ifcar=false;ifriding=false;" v-if="ifbus ==true" style="position:relative;left:22%;top:8px;" 
-					theme="multi-color" size="24" :fill="['#FFFFFF' ,'#7ed321' ,'#FFF' ,'#b8e986']" :strokeWidth="3"/>
+					theme="multi-color" size="24" :fill="['#FFFFFF' ,'#7ed321' ,'#FFF' ,'#b8e986']" :strokeWidth="3"/></el-tooltip>
 
+					<el-tooltip class="item" content="驾车" placement="top">
 					<Car id="unCar" @click="ifcar = !ifcar;ifbus=false;ifriding=false;"  v-if="ifcar ==false" style="position:relative;left:37%;top:8px;" 
-					theme="multi-color" size="24" :fill="['#ffffff' ,'#3D93FD' ,'#4a90e2' ,'#ffffff']" :strokeWidth="3"/>
+					theme="multi-color" size="24" :fill="['#ffffff' ,'#3D93FD' ,'#4a90e2' ,'#ffffff']" :strokeWidth="3"/></el-tooltip>
 
+					<el-tooltip class="item" content="驾车" placement="top">
 					<Car id="doCar" @click="ifcar = !ifcar;ifbus=false;ifriding=false;" v-if="ifcar == true" style="position:relative;left:37%;top:8px;" 
-					theme="multi-color" size="24" :fill="['#ffffff' ,'#7ed321' ,'#4a90e2' ,'#ffffff']" :strokeWidth="3"/>
+					theme="multi-color" size="24" :fill="['#ffffff' ,'#7ed321' ,'#4a90e2' ,'#ffffff']" :strokeWidth="3"/></el-tooltip>
 
+					<el-tooltip class="item" content="步行" placement="top">
 					<Riding id="unRiding" @click="ifriding = !ifriding;ifcar=false;ifbus=false;" v-if="ifriding ==false" style="position:relative;left:52%;top:8px;" 
-					theme="multi-color" size="24" :fill="['#ffffff' ,'#3D93FD' ,'#4a90e2' ,'#b8e986']" :strokeWidth="3"/>
-
+					theme="multi-color" size="24" :fill="['#ffffff' ,'#3D93FD' ,'#4a90e2' ,'#b8e986']" :strokeWidth="3"/></el-tooltip>
+					
+					<el-tooltip class="item" content="步行" placement="top">
 					<Riding id="doRiding" @click="ifriding = !ifriding;ifcar=false;ifbus=false;" v-if="ifriding ==true" style="position:relative;left:52%;top:8px;" 
-					theme="multi-color" size="24" :fill="['#ffffff' ,'#b8e986' ,'#4a90e2' ,'#b8e986']" :strokeWidth="3"/>
+					theme="multi-color" size="24" :fill="['#ffffff' ,'#b8e986' ,'#4a90e2' ,'#b8e986']" :strokeWidth="3"/></el-tooltip>
 
 					<br><br>	
 					<el-input
@@ -361,7 +367,7 @@
 </script>
 
 
-<style type="text/css">
+<style type="text/css" >
 	html,body{
 		height:100%;
 	}

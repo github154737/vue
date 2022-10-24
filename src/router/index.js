@@ -57,6 +57,20 @@ export default new Router({
           component: () => import('@/components/map/navigation'),
           name:'navigation'
         },
+        {
+          path:'/click4property',
+          component: () => import('@/components/map/click4property'),
+          name:'click4property'
+        },
+        {
+          path:'/edit',
+          component: () => import('@/components/map/edit'),
+          name:'edit'
+        },{
+          path:'/rainPrediction',
+          component: () => import('@/components/map/rainPrediction'),
+          name:'rainPrediction'
+        },
 
       ]
     },
